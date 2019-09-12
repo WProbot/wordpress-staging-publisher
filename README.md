@@ -4,14 +4,12 @@ One command to duplicate the staging environment into its production environment
 
 ## Getting started
 
-Below is a basic setup.
-
 ![The console, the staging, and the production](docs/images/wordpress-staging-publisher.basic.png?raw=true "Title")
 
-Where there are three independent machines:
- - **Staging**, where an existing staging wordpress website was installed.
- - **Production**, where a copy of the production website will be installed.
- - **Console**, where the [Wordpress Staging Publisher](https://github.com/InternationalRiceResearchInstitute/wordpress-staging-publisher) was installed.
+The three independent machines:
+ - **Staging** - where an existing staging wordpress website was installed.
+ - **Production** - where a copy of the production website will be installed.
+ - **Console** - where the [Wordpress Staging Publisher](https://github.com/InternationalRiceResearchInstitute/wordpress-staging-publisher) was installed.
 
 Provided that you have already set the [configurations](#configurations)... In your console, simply fire the statement:
 
@@ -93,11 +91,49 @@ If all are installed on those three machines, then you are good to go.
    ```
    It is important that the basename of the key should match the `machine_username` value. E.g. *abel.pem*
 
+3. Copy the `config/production/install.conf.sample` into `config/production/install.conf` and make neccessary changes
+   ```bash
+   cd /path/to/wordpress-staging-publisher
+   cp config/production/install.conf.sample config/production/install.conf
+   ```
+
+   **install.conf** ([Documentation](#installconf))
+   ```bash
+   machine_username="abel"
+   machine_hostname="www.example.com"
+   wordpress_dir="/var/www/html"
+   base_site_url="https://www.example.com"
+   ```
+4. Put a copy of an SSH key that can be used to access the Production machine inside the config directory `/path/to/wordpress-staging-publisher/config/production`
+   ```bash
+   cp /source/production.pem /path/to/wordpress-staging-publisher/config/production/abel.pem
+   ```
+   It is important that the basename of the key should match the `machine_username` value. E.g. *abel.pem*
+
+5. Copy the `config/production/my.cnf.sample` into `config/production/my.cnf` and make neccessary changes
+   ```bash
+   cd /path/to/wordpress-staging-publisher
+   cp config/production/my.cnf.sample config/production/my.cnf
+   ```
+
+   **install.conf** ([Documentation](#installconf))
+   ```bash
+   machine_username="abel"
+   machine_hostname="www.example.com"
+   wordpress_dir="/var/www/html"
+   base_site_url="https://www.example.com"
+   ```
 
 ### install.conf
 
-#### machine_username
+#### `machine_username`
 When you login to the staging machine using SSH, what username do you use? E.g. `ssh abel@staging.example.com`. Define this configuration by providing the value of that username. In this case, it is `abel`
 
-#### machine_hostname
+#### `machine_hostname`
 When you login to the staging machine using SSH, what hostname do you call it? E.g. `ssh abel@staging.example.com`. Define this configuration by providing the value of that hostname. In this case, it is `staging.example.com`
+
+#### `wordpress_dir`
+The full path of the directory of where wordpress was installed. E.g. `/var/www/html`. Define this configuration by providing the value of the full path.
+
+#### `base_site_url`
+Usually this is the URL of the homepage but without the ending slash `/` at the end of it. E.g. `http://staging.example.com` or `http://www.example.com`
