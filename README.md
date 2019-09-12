@@ -28,7 +28,7 @@ It should do the exhaustive work for you.
    - replace the value of `DB_PASSWORD`
    - replace the value of `DB_NAME`
 6. Zip back into the new `wordpress.zip`
-7. Search and replace the `database.sql` file using the `base_site_url` of the staging with the value of `base_site_url` of the production
+7. Search and replace the `database.sql` file using the `base_site_url` of the staging with the value of `base_site_url` of the production. E.g. `http://staging.example.com` into `https://www.example.com`
 8. Upload the prepared files to the production environment
    - `wordpress.zip`
    - `database.sql`
@@ -79,8 +79,16 @@ If all is installed, then you are good to go.
    wordpress_dir="/var/www/html"
    base_site_url="http://staging.example.com"
    ```
+   For more details, please see the [install.conf documentation](#install-conf) below.
+
 2. Put a copy of an SSH key that can be used to access the staging machine inside the config directory `/path/to/wordpress-staging-publisher/config/staging`
    ```bash
    cp /source/staging.pem /path/to/wordpress-staging-publisher/config/staging/abel.pem
    ```
    It is important that the basename of the key should match the `machine_username` value. E.g. *abel.pem*
+
+
+### install.conf
+
+**machine_username** - When you login to the staging machine using SSH, what username do you use? E.g. `ssh abel@staging.example.com`. Define this configuration by providing the value of that username. In this case, it is `abel`
+**machine_hostname** - When you login to the staging machine using SSH, what hostname do you call it? E.g. `ssh abel@staging.example.com`. Define this configuration by providing the value of that hostname. In this case, it is `staging.example.com`
