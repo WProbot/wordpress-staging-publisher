@@ -116,12 +116,13 @@ If all are installed on those three machines, then you are good to go.
    cp config/production/my.cnf.sample config/production/my.cnf
    ```
 
-   **install.conf** ([Documentation](#installconf))
+   **my.cnf** ([Documentation](#mycnf))
    ```bash
-   machine_username="abel"
-   machine_hostname="www.example.com"
-   wordpress_dir="/var/www/html"
-   base_site_url="https://www.example.com"
+   [mysql]
+   host=hostname-here
+   user=username-here
+   password=password-here
+   database=database-here
    ```
 
 ### install.conf
@@ -137,3 +138,17 @@ The full path of the directory of where wordpress was installed. E.g. `/var/www/
 
 #### `base_site_url`
 Usually this is the URL of the homepage but without the ending slash `/` at the end of it. E.g. `http://staging.example.com` or `http://www.example.com`
+
+### my.cnf
+
+#### `host`
+Hostname of the database server. E.g. `localhost`
+
+#### `user`
+Username of the database user that can access the database server. E.g. `abel`
+
+#### `password`
+Password of the database user that can access the database server. E.g. `c4!n`
+
+#### `database`
+Name of the database where the wordpress data will be stored.. E.g. `my_database`
