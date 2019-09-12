@@ -70,6 +70,58 @@ which zip
 
 If all are installed on those three machines, then you are good to go.
 
+## File structure
+
+Below should be the file structure to make the publisher working.
+
+```
+---/wordpress-staging-publisher
+   |
+   +--/config
+   |  |
+   |  +--/staging
+   |  |  |
+   |  |  +--install.conf
+   |  |  |
+   |  |  +--abel.pem
+   |  |
+   |  +--/production
+   |     |
+   |     +--install.conf
+   |     |
+   |     +--my.cnf
+   |     |
+   |     +--abel.pem
+   |
+   +--/baked
+   |  |
+   |  +--dump_helper.php
+   |
+   +--/prepared
+   |  |
+   |  +--/local
+   |  |  |
+   |  |  +--my.cnf.database.php
+   |  |  |
+   |  |  +--wp-config.search-and-replace.php
+   |  |
+   |  +--/remote
+   |     |
+   |     +--front_liner.staging.sh
+   |     |
+   |     +--front_liner.production.sh
+   |     |
+   |     +--file_generator.zip.sh
+   |     |
+   |     +--file_generator.unzip.sh
+   |     |
+   |     +--database_generator.sh
+   |    
+   +--publi.sh 
+```
+
+See the below section for customizing the configurations.
+
 ## Configurations
 
 1. **Copy** the `config/staging/install.conf.sample` into `config/staging/install.conf` like so:
