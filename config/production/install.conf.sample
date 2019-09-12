@@ -1,0 +1,4 @@
+machine_username="abel"
+machine_hostname="www.example.com"
+wordpress_dir="/var/www/html"
+base_site_url="https://www.example.com"
