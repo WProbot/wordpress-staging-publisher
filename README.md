@@ -4,7 +4,7 @@ One command to duplicate the staging environment into its production environment
 
 ## Getting started
 
-![The console, the staging, and the production](docs/images/wordpress-staging-publisher.basic.png?raw=true "Title")
+![Console, Staging, and Production](docs/images/wordpress-staging-publisher.basic.png?raw=true "Console, Staging, and Production")
 
 The three independent machines:
  - **Staging** - where an existing staging wordpress website was installed.
@@ -87,13 +87,13 @@ If all are installed on those three machines, then you are good to go.
    ```
    Then make necessary changes. 
 
-2. Put a copy of an SSH key that can be used to access the staging machine inside the config directory `/path/to/wordpress-staging-publisher/config/staging` like so
+2. **Put a copy** of an SSH key that can be used to access the staging machine inside the config directory `/path/to/wordpress-staging-publisher/config/staging` like so:
    ```bash
-   cp /source/staging.pem /path/to/wordpress-staging-publisher/config/staging/abel.pem
+   cp /source/of/usable/staging.pem /path/to/wordpress-staging-publisher/config/staging/abel.pem
    ```
    It is important that the basename of the key file should match the `machine_username` value. E.g. *abel.pem*
 
-3. Copy the `config/production/install.conf.sample` into `config/production/install.conf` like so:
+3. **Copy** the `config/production/install.conf.sample` into `config/production/install.conf` like so:
    ```bash
    cd /path/to/wordpress-staging-publisher
    cp config/production/install.conf.sample config/production/install.conf
@@ -108,9 +108,9 @@ If all are installed on those three machines, then you are good to go.
    ```
    Then make necessary changes.
 
-4. Put a copy of an SSH key that can be used to access the Production machine inside the config directory `/path/to/wordpress-staging-publisher/config/production` like so
+4. **Put a copy** of an SSH key that can be used to access the Production machine inside the config directory `/path/to/wordpress-staging-publisher/config/production` like so:
    ```bash
-   cp /source/production.pem /path/to/wordpress-staging-publisher/config/production/abel.pem
+   cp /source/of/usable/production.pem /path/to/wordpress-staging-publisher/config/production/abel.pem
    ```
    It is important that the basename of the key file should match the `machine_username` value. E.g. *abel.pem*
 
@@ -158,3 +158,20 @@ Password of the database user that can access the database server. E.g. `c4!n`
 
 #### `database`
 Name of the database where the wordpress data will be stored.. E.g. `my_database`
+
+## Installation setups
+1. **Basic**
+   ![Console, Staging, and Production](docs/images/wordpress-staging-publisher.basic.png?raw=true "Console, Staging, and Production")
+   - Requires 3 independent machines for it to work.
+   - The [Wordpress Staging Publisher](https://github.com/InternationalRiceResearchInstitute/wordpress-staging-publisher) was installed in an independent machine.
+   See [full documentation](docs/installation-setups/basic)
+2. **Staging as console**
+   ![Staging as console, and Production](docs/images/wordpress-staging-publisher.staging-as-console.png?raw=true "Staging as console, and Production")
+   - Requires only 2 independent machines for it to work.
+   - The [Wordpress Staging Publisher](https://github.com/InternationalRiceResearchInstitute/wordpress-staging-publisher) was installed in the staging.
+   See [full documentation](docs/installation-setups/staging-as-console)
+3. **Production as console**
+   ![Staging as console, and Production](docs/images/wordpress-staging-publisher.production-as-console.png?raw=true "Staging as console, and Production")
+   - Requires only 2 independent machines for it to work.
+   - The [Wordpress Staging Publisher](https://github.com/InternationalRiceResearchInstitute/wordpress-staging-publisher) was installed in the staging.
+   See [full documentation](docs/installation-setups/production-as-console)
