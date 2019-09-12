@@ -161,17 +161,28 @@ Name of the database where the wordpress data will be stored.. E.g. `my_database
 
 ## Installation setups
 1. **Basic**
+
    ![Console, Staging, and Production](docs/images/wordpress-staging-publisher.basic.png?raw=true "Console, Staging, and Production")
+
    - Requires 3 independent machines for it to work.
    - The [Wordpress Staging Publisher](https://github.com/InternationalRiceResearchInstitute/wordpress-staging-publisher) was installed in an independent machine.
+
    See [full documentation](docs/installation-setups/basic)
+
 2. **Staging as console**
+
    ![Staging as console, and Production](docs/images/wordpress-staging-publisher.staging-as-console.png?raw=true "Staging as console, and Production")
+
    - Requires only 2 independent machines for it to work.
    - The [Wordpress Staging Publisher](https://github.com/InternationalRiceResearchInstitute/wordpress-staging-publisher) was installed in the staging.
+
    See [full documentation](docs/installation-setups/staging-as-console)
+
 3. **Production as console**
+
    ![Staging as console, and Production](docs/images/wordpress-staging-publisher.production-as-console.png?raw=true "Staging as console, and Production")
+
    - Requires only 2 independent machines for it to work.
    - The [Wordpress Staging Publisher](https://github.com/InternationalRiceResearchInstitute/wordpress-staging-publisher) was installed in the staging.
+
    See [full documentation](docs/installation-setups/production-as-console)
