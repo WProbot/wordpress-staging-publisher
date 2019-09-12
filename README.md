@@ -4,15 +4,22 @@ One command to duplicate the staging environment into its production environment
 
 ## Getting started
 
-Provided that you have already set the configurations...
+Below is a basic setup.
 
-In your command line, simply fire the statement:
+![The console, the staging, and the production](docs/images/wordpress-staging-publisher.basic.png?raw=true "Title")
+
+Where there are three independent machines:
+ - **Staging**, where an existing staging wordpress website was installed.
+ - **Production**, where a copy of the production website will be installed.
+ - **Console**, where the [Wordpress Staging Publisher](https://github.com/InternationalRiceResearchInstitute/wordpress-staging-publisher) was installed.
+
+Provided that you have already set the [configurations](#configurations)... In your console, simply fire the statement:
 
 ```bash
 /path/to/publi.sh
 ```
 
-It should do the exhaustive work for you.
+It should do the exhaustive work for you. The algorithm section below explains the inner workings of the tool.
 
 ## Algorithm
 
@@ -37,34 +44,35 @@ It should do the exhaustive work for you.
 
 ## Requirements
 
-Just a bunch of pretty much basic bash tools which you can check by using the `which` command like so:
+Just a bunch of pretty basic command-line tools which can checked by using the `which` command like so:
 
 ```bash
 which zip
 ```
 
-1. Staging
-   - zip
-   - mysqldump
-   - php
-2. Console
-   - zip
-   - unzip
-   - awk
-   - grep
-   - sed
-   - tr
-   - cut
-   - xargs
-   - php
-3. Production
-   - unzip
-   - mysql
-   - php
+1. **Staging**
+   - `zip`
+   - `mysqldump`
+   - `php`
+2. **Console**
+   - `ssh`
+   - `zip`
+   - `unzip`
+   - `awk`
+   - `grep`
+   - `sed`
+   - `tr`
+   - `cut`
+   - `xargs`
+   - `php`
+3. **Production**
+   - `unzip`
+   - `mysql`
+   - `php`
 
-If all is installed, then you are good to go.
+If all are installed on those three machines, then you are good to go.
 
-## Configuration
+## Configurations
 
 1. Copy the `config/staging/install.conf.sample` into `config/staging/install.conf` and make neccessary changes
    ```bash
@@ -72,15 +80,13 @@ If all is installed, then you are good to go.
    cp config/staging/install.conf.sample config/staging/install.conf
    ```
 
-   **install.conf**
+   **install.conf** ([Documentation](#installconf))
    ```bash
    machine_username="abel"
    machine_hostname="staging.example.com"
    wordpress_dir="/var/www/html"
    base_site_url="http://staging.example.com"
    ```
-   For more details, please see the [install.conf documentation](#install-conf) below.
-
 2. Put a copy of an SSH key that can be used to access the staging machine inside the config directory `/path/to/wordpress-staging-publisher/config/staging`
    ```bash
    cp /source/staging.pem /path/to/wordpress-staging-publisher/config/staging/abel.pem
@@ -90,5 +96,8 @@ If all is installed, then you are good to go.
 
 ### install.conf
 
-**machine_username** - When you login to the staging machine using SSH, what username do you use? E.g. `ssh abel@staging.example.com`. Define this configuration by providing the value of that username. In this case, it is `abel`
-**machine_hostname** - When you login to the staging machine using SSH, what hostname do you call it? E.g. `ssh abel@staging.example.com`. Define this configuration by providing the value of that hostname. In this case, it is `staging.example.com`
+#### machine_username
+When you login to the staging machine using SSH, what username do you use? E.g. `ssh abel@staging.example.com`. Define this configuration by providing the value of that username. In this case, it is `abel`
+
+#### machine_hostname
+When you login to the staging machine using SSH, what hostname do you call it? E.g. `ssh abel@staging.example.com`. Define this configuration by providing the value of that hostname. In this case, it is `staging.example.com`
