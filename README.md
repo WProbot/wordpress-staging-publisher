@@ -14,7 +14,7 @@ The three independent machines:
 Provided that you have already set the [configurations](#configurations)... In your console, simply fire the statement:
 
 ```bash
-/path/to/publi.sh
+/path/to/wordpress-staging-publisher/publi.sh
 ```
 
 It should do the exhaustive work for you. The algorithm section below explains the inner workings of the tool.
@@ -72,58 +72,64 @@ If all are installed on those three machines, then you are good to go.
 
 ## Configurations
 
-1. Copy the `config/staging/install.conf.sample` into `config/staging/install.conf` and make neccessary changes
+1. **Copy** the `config/staging/install.conf.sample` into `config/staging/install.conf` like so:
    ```bash
    cd /path/to/wordpress-staging-publisher
    cp config/staging/install.conf.sample config/staging/install.conf
    ```
 
    **install.conf** ([Documentation](#installconf))
-   ```bash
+   ```
    machine_username="abel"
    machine_hostname="staging.example.com"
    wordpress_dir="/var/www/html"
    base_site_url="http://staging.example.com"
    ```
-2. Put a copy of an SSH key that can be used to access the staging machine inside the config directory `/path/to/wordpress-staging-publisher/config/staging`
+   Then make necessary changes. 
+
+2. Put a copy of an SSH key that can be used to access the staging machine inside the config directory `/path/to/wordpress-staging-publisher/config/staging` like so
    ```bash
    cp /source/staging.pem /path/to/wordpress-staging-publisher/config/staging/abel.pem
    ```
-   It is important that the basename of the key should match the `machine_username` value. E.g. *abel.pem*
+   It is important that the basename of the key file should match the `machine_username` value. E.g. *abel.pem*
 
-3. Copy the `config/production/install.conf.sample` into `config/production/install.conf` and make neccessary changes
+3. Copy the `config/production/install.conf.sample` into `config/production/install.conf` like so:
    ```bash
    cd /path/to/wordpress-staging-publisher
    cp config/production/install.conf.sample config/production/install.conf
    ```
 
    **install.conf** ([Documentation](#installconf))
-   ```bash
+   ```
    machine_username="abel"
    machine_hostname="www.example.com"
    wordpress_dir="/var/www/html"
    base_site_url="https://www.example.com"
    ```
-4. Put a copy of an SSH key that can be used to access the Production machine inside the config directory `/path/to/wordpress-staging-publisher/config/production`
+   Then make necessary changes.
+
+4. Put a copy of an SSH key that can be used to access the Production machine inside the config directory `/path/to/wordpress-staging-publisher/config/production` like so
    ```bash
    cp /source/production.pem /path/to/wordpress-staging-publisher/config/production/abel.pem
    ```
-   It is important that the basename of the key should match the `machine_username` value. E.g. *abel.pem*
+   It is important that the basename of the key file should match the `machine_username` value. E.g. *abel.pem*
 
-5. Copy the `config/production/my.cnf.sample` into `config/production/my.cnf` and make neccessary changes
+5. Copy the `config/production/my.cnf.sample` into `config/production/my.cnf` like so:
    ```bash
    cd /path/to/wordpress-staging-publisher
    cp config/production/my.cnf.sample config/production/my.cnf
    ```
 
    **my.cnf** ([Documentation](#mycnf))
-   ```bash
+   ```
    [mysql]
    host=hostname-here
    user=username-here
    password=password-here
    database=database-here
    ```
+
+   Then make necessary changes.
 
 ### install.conf
 
