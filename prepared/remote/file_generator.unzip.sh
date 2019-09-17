@@ -1,4 +1,19 @@
 #!/bin/bash
+# This script archives the existing wordpress installation, then overrides the current directory.
+# with the the updated package.
+# Copyright (C) 2019  Abel Callejo, International Rice Research Institute (a.callejo@irri.org)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see https://www.gnu.org/licenses/gpl-3.0.html.
 
 timestamp="$1"
 wp_production_dir="$2"
@@ -8,7 +23,7 @@ local_working_dir="$local_user_home_dir/.wordpress-staging-publisher/$timestamp"
 production_dir="$local_working_dir/production"
 console_dir="$local_working_dir/console"
 
-# Go to the parent directory of the wordpress installation
+# Archive the existing wordpress installation
 cd "$wp_production_dir/"
 zip -o -r "$console_dir/wordpress.archive.$timestamp.zip" ./* > /dev/null
 
