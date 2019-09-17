@@ -239,11 +239,13 @@ Name of the database where the wordpress data will be stored.. E.g. `my_database
 
    See [full documentation](docs/installation-setups/production-as-console)
 
-## License
+## Initiative rights
 
-Copyright (C) 2019  Abel Callejo, International Rice Research Institute (a.callejo@irri.org)
+Copyright &copy; 2019  Abel Callejo, International Rice Research Institute (a.callejo@irri.org)
 
-This program is free software: you can redistribute it and/or modify
+## Software license
+
+This program is **free software**: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation.
 
